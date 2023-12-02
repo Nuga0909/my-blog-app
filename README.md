@@ -151,6 +151,6 @@ I would like to thank microverse for the immense support.
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](https://github.com/nuga0909/my_blog_app/blob/dev/LICENSE) licensed.
+This project is [MIT](./LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
