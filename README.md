@@ -109,7 +109,6 @@ it will run the the server on localhost:3000
 👤 **Adeshina Adenuga**
 
 - GitHub: [@Nuga0909](https://github.com/Nuga0909)
-- twitter: [@nuga09099](https://twitter.com/nuga09099)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
