@@ -5,12 +5,12 @@ RSpec.describe Comment, type: :model do
   let(:post) { Post.create(author: user, title: 'Post', comments_counter: 0, likes_counter: 0) }
 
   it 'is valid with valid attributes' do
-    comment = Comment.new(author: user, post: post)
+    comment = Comment.new(author: user, post:)
     expect(comment).to be_valid
   end
 
   it 'increments the post comments_counter after creation' do
-    expect { Comment.create(author: user, post: post) }
+    expect { Comment.create(author: user, post:) }
       .to change { post.reload.comments_counter }.by(1)
   end
 end

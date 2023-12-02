@@ -17,9 +17,9 @@ RSpec.describe User, type: :model do
   describe 'User Model method tests' do
     it 'should return three recent posts' do
       author = User.create(name: 'Harry')
-      post4 = Post.create(title: 'Title4', author: author)
-      post5 = Post.create(title: 'Title5', author: author)
-      post6 = Post.create(title: 'Title6', author: author)
+      post4 = Post.create(title: 'Title4', author:)
+      post5 = Post.create(title: 'Title5', author:)
+      post6 = Post.create(title: 'Title6', author:)
       expect(author.recent_posts).to eq([post6, post5, post4])
     end
   end
