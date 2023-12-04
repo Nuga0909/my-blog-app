@@ -23,7 +23,7 @@
 
 # 📖 [My blog App] <a name="about-project"></a>
 
-**[My blog App]** is an blog app which the user can write posts, comments and like on posts.
+**[My blog App]** is a blog app which the user can write posts, comments and add likes on posts.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -72,7 +72,7 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 ```sh
-cd blog_app
+cd my-blog-app
 git https://github.com/Nuga0909/my-blog-app
 ```
 
@@ -86,7 +86,7 @@ You need to setup database for these project
 
 Install this project with:
 
-  cd blog_app
+  cd my-blog-app
   bundle install
 it will install the required gemfiles for running the project
 
