@@ -1,67 +1,58 @@
 require 'rails_helper'
-
 RSpec.feature 'Post Index Page' do
-  let!(:user1) { create_user_with_posts }
-
-  before do
-    create_comments_for_posts(user1)
-  end
-
-  scenario 'Displays user information and posts' do
+  let!(:user1) { User.create(name: 'Tom', bio: 'Teacher from Mexico.', photo: 'https://avatars.githubusercontent.com/u/98366229?v=4', posts_counter: 0) }
+  let!(:post1) { Post.create(author_id: user1.id, title: 'Hello', text: 'This is my first post', comments_counter: 0, likes_counter: 0) }
+  let!(:post2) { Post.create(author_id: user1.id, title: 'You are welcome', text: 'This is my second post', comments_counter: 0, likes_counter: 0) }
+  let!(:post3) { Post.create(author_id: user1.id, title: 'Welcome to the new app', text: 'Tis is a welcome message to the new blog app', comments_counter: 0, likes_counter: 0) }
+  let!(:post4) { Post.create(author_id: user1.id, title: 'this is new post', text: 'i like this', comments_counter: 0, likes_counter: 0) }
+  let!(:comment1) { Comment.create(author: user1, post: post3, body: 'Perfect!') }
+  let!(:comment2) { Comment.create(author: user1, post: post1, body: 'Good luck!') }
+  let!(:comment3) { Comment.create(author: user1, post: post2, body: 'Never give up!') }
+  let!(:comment4) { Comment.create(author: user1, post: post4, body: 'Next, Good job!') }
+  scenario 'Displays profile picture' do
     visit user_posts_path(user1)
-
-    expect_user_information(user1)
-    expect_posts_information(user1.posts.first)
-    expect_comments_information(user1.posts.first.comments.first)
-    expect_pagination_information
-
-    click_link user1.posts.first.title
-    expect(current_path).to eq(user_post_path(user1, user1.posts.first))
+    expect(page).to have_css("img[src='#{user1.photo}']")
   end
-
-  private
-
-  def create_user_with_posts
-    user = User.create(name: 'Tom', bio: 'Teacher from Mexico.',
-                       photo: 'https://avatars.githubusercontent.com/u/98366229?v=4', posts_counter: 0)
-    create_posts(user)
-    user
+  scenario 'Displays username' do
+    visit user_posts_path(user1)
+    expect(page).to have_content(user1.name)
   end
-
-  def create_posts(user)
-    Post.create(author_id: user.id, title: 'Hello', text: 'This is my first post',
-                comments_counter: 0, likes_counter: 0)
-    # Create other posts as needed
+  scenario 'Displays posts count' do
+    visit user_posts_path(user1)
+    expect(page).to have_content("Number Of posts #{user1.posts.count}")
   end
-
-  def create_comments_for_posts(user)
-    user.posts.each do |post|
-      create_comment(user, post, 'Sample Comment')
-    end
+  scenario 'Displays post title' do
+    visit user_posts_path(user1)
+    expect(page).to have_content(post1.title)
   end
-
-  def create_comment(author, post, body)
-    Comment.create(author: author, post: post, body: body)
+  scenario 'Displays some part of post body' do
+    visit user_posts_path(user1)
+    expect(page).to have_content(post1.text)
   end
-
-  def expect_user_information(user)
-    expect(page).to have_css("img[src='#{user.photo}']")
-    expect(page).to have_content(user.name)
-    expect(page).to have_content("Number Of posts #{user.posts.count}")
+  scenario 'Displays post title' do
+    visit user_posts_path(user1)
+    expect(page).to have_content(post1.title)
   end
-
-  def expect_posts_information(post)
-    expect(page).to have_content(post.title)
-    expect(page).to have_content(post.text)
-    expect(page).to have_content("Comments #{post.comments.count}")
-    expect(page).to have_content("Likes #{post.likes.count}")
+  scenario 'Displays the 1st comment' do
+    visit user_posts_path(user1)
+    expect(page).to have_content(comment1.body)
   end
-
-  def expect_comments_information(comment)
-    expect(page).to have_content(comment.body)
+  scenario 'Displays comments count' do
+    visit user_posts_path(user1)
+    expect(page).to have_content("Comments #{post1.comments.count}")
   end
-
-  def expect_pagination_information
+  scenario 'Displays likes count' do
+    visit user_posts_path(user1)
+    expect(page).to have_content("Likes #{post1.likes.count}")
+  end
+  scenario 'Displays the pagination if more than 3 posts' do
+    visit user_posts_path(user1)
     expect(page).to have_content('Next')
+  end
+  scenario 'Redirects to post show page when clicked' do
+    visit user_posts_path(user1)
+    click_link post1.title
+    sleep(5)
+    expect(current_path).to eq(user_post_path(user1, post1))
   end
 end
