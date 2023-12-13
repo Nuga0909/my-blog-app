@@ -10,7 +10,7 @@ RSpec.feature 'Post Index Page' do
                 likes_counter: 0)
   end
   let!(:post3) do
-    Post.create(author_id: user1.id, title: 'Welcome to the new app', text: 'Tis is a welcome message to the new blog app', comments_counter: 0,
+    Post.create(author_id: user1.id, title: 'Welcome to the new app', text: 'welcome message', comments_counter: 0,
                 likes_counter: 0)
   end
   let!(:post4) do
