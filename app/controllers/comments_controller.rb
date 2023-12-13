@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def new
-    @user = Post.find(params[:post_id])
+    @user = Post.includes(:user).find(params[:post_id]).user
     @post = Post.find(params[:post_id])
     @comment = Comment.new
   end
@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
       flash[:success] = 'Comment created successfully'
     else
       flash[:error] = 'Something went wrong.'
-      puts @comment.errors.full_messages # Check the server console for error messages
+      puts @comment.errors.full_messages
       render :new
     end
 
