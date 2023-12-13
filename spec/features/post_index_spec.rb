@@ -1,10 +1,22 @@
 require 'rails_helper'
 RSpec.feature 'Post Index Page' do
   let!(:user1) { User.create(name: 'Tom', bio: 'Teacher from Mexico.', photo: 'https://avatars.githubusercontent.com/u/98366229?v=4', posts_counter: 0) }
-  let!(:post1) { Post.create(author_id: user1.id, title: 'Hello', text: 'This is my first post', comments_counter: 0, likes_counter: 0) }
-  let!(:post2) { Post.create(author_id: user1.id, title: 'You are welcome', text: 'This is my second post', comments_counter: 0, likes_counter: 0) }
-  let!(:post3) { Post.create(author_id: user1.id, title: 'Welcome to the new app', text: 'Tis is a welcome message to the new blog app', comments_counter: 0, likes_counter: 0) }
-  let!(:post4) { Post.create(author_id: user1.id, title: 'this is new post', text: 'i like this', comments_counter: 0, likes_counter: 0) }
+  let!(:post1) do
+    Post.create(author_id: user1.id, title: 'Hello', text: 'This is my first post', comments_counter: 0,
+                likes_counter: 0)
+  end
+  let!(:post2) do
+    Post.create(author_id: user1.id, title: 'You are welcome', text: 'This is my second post', comments_counter: 0,
+                likes_counter: 0)
+  end
+  let!(:post3) do
+    Post.create(author_id: user1.id, title: 'Welcome to the new app',
+                text: 'Tis is a welcome message to the new blog app', comments_counter: 0, likes_counter: 0)
+  end
+  let!(:post4) do
+    Post.create(author_id: user1.id, title: 'this is new post', text: 'i like this', comments_counter: 0,
+                likes_counter: 0)
+  end
   let!(:comment1) { Comment.create(author: user1, post: post3, body: 'Perfect!') }
   let!(:comment2) { Comment.create(author: user1, post: post1, body: 'Good luck!') }
   let!(:comment3) { Comment.create(author: user1, post: post2, body: 'Never give up!') }
