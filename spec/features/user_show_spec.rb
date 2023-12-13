@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.feature 'User Show Page' do
   let!(:user1) do
-    User.create(name: 'Tom', bio: 'Teacher from Mexico.', photo: 'https://avatars.githubusercontent.com/u/98366229?v=4', posts_counter: 0)
+    User.create(name: 'Tom', bio: 'Teacher from Mexico.',
+                photo: 'https://avatars.githubusercontent.com/u/98366229?v=4', posts_counter: 0)
   end
 
   let!(:post1) { create_post(user1, 'My first post') }
@@ -40,6 +41,6 @@ RSpec.feature 'User Show Page' do
   private
 
   def create_post(author, title)
-    Post.create(author: author, title: title)
+    Post.create(author:, title:)
   end
 end

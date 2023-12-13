@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.feature 'Post Index Page' do
   let!(:user1) do
-    User.create(name: 'Tom', bio: 'Teacher from Mexico.', photo: 'https://avatars.githubusercontent.com/u/98366229?v=4', posts_counter: 0)
+    User.create(name: 'Tom', bio: 'Teacher from Mexico.',
+                photo: 'https://avatars.githubusercontent.com/u/98366229?v=4', posts_counter: 0)
   end
 
   let!(:post1) { create_post(user1, 'Hello', 'This is my first post') }
@@ -47,7 +48,7 @@ RSpec.feature 'Post Index Page' do
     visit user_posts_path(user1)
     expect(page).to have_content(comment1.body)
   end
- 
+
   scenario 'Displays comments count' do
     visit user_posts_path(user1)
     expect(page).to have_content("Comments #{post1.comments.count}")
@@ -72,10 +73,10 @@ RSpec.feature 'Post Index Page' do
   private
 
   def create_post(author, title, text)
-    Post.create(author_id: author.id, title: title, text: text, comments_counter: 0, likes_counter: 0)
+    Post.create(author_id: author.id, title:, text:, comments_counter: 0, likes_counter: 0)
   end
 
   def create_comment(author, post, body)
-    Comment.create(author: author, post: post, body: body)
+    Comment.create(author:, post:, body:)
   end
 end
