@@ -110,6 +110,11 @@ it will run the the server on localhost:3000
 
 - GitHub: [@Nuga0909](https://github.com/Nuga0909)
 
+👤 **Assem Zhorabay**
+
+- GitHub: [@zhorabay](https://github.com/zhorabay)
+- LinkedIn: [@zhorabay](https://www.linkedin.com/in/zhorabay)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
