@@ -1,6 +1,6 @@
 require 'rails_helper'
 RSpec.feature 'Post Index Page' do
-  let!(:user1) { User.create(name: 'Tom', bio: 'Teacher from Mexico.', photo: 'app\assets\images\default.jpg', posts_counter: 0) }
+  let!(:user1) { User.create(name: 'Tom', bio: 'Teacher from Mexico.', photo: 'https://avatars.githubusercontent.com/u/98366229?v=4', posts_counter: 0) }
   let!(:post1) { Post.create(author_id: user1.id, title: 'Hello', text: 'This is my first post', comments_counter: 0, likes_counter: 0) }
   let!(:post2) { Post.create(author_id: user1.id, title: 'You are welcome', text: 'This is my second post', comments_counter: 0, likes_counter: 0) }
   let!(:post3) { Post.create(author_id: user1.id, title: 'Welcome to the new app', text: 'Tis is a welcome message to the new blog app', comments_counter: 0, likes_counter: 0) }
@@ -9,10 +9,10 @@ RSpec.feature 'Post Index Page' do
   let!(:comment2) { Comment.create(author: user1, post: post1, body: 'Good luck!') }
   let!(:comment3) { Comment.create(author: user1, post: post2, body: 'Never give up!') }
   let!(:comment4) { Comment.create(author: user1, post: post4, body: 'Next, Good job!') }
-  # scenario 'Displays profile picture' do
-  #   visit user_posts_path(user1)
-  #   expect(page).to have_css(".user-photo[src*='#{user1.photo}']")
-  # end
+  scenario 'Displays profile picture' do
+    visit user_posts_path(user1)
+    expect(page).to have_css("img[src='#{user1.photo}']")
+  end
   scenario 'Displays username' do
     visit user_posts_path(user1)
     expect(page).to have_content(user1.name)
