@@ -6,7 +6,7 @@ Capybara.register_driver :selenium do |app|
   options = Selenium::WebDriver::Firefox::Options.new
   options.binary = 'C:\Program Files (x86)\Mozilla Firefox\firefox.exe'
 
-  Capybara::Selenium::Driver.new(app, browser: :firefox, options: options)
+  Capybara::Selenium::Driver.new(app, browser: :firefox, options:)
 end
 
 Capybara.javascript_driver = :selenium

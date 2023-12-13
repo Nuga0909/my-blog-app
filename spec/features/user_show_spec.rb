@@ -23,7 +23,7 @@ RSpec.feature 'User Show Page' do
   end
   scenario 'Displays the first 3 posts' do
     visit user_path(user1)
-    user1.posts.limit(3).each do |post|
+    user1.posts.limit(3).each do |_post|
       expect(page).to have_content(post1.title)
     end
   end

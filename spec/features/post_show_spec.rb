@@ -1,7 +1,10 @@
 require 'rails_helper'
 RSpec.feature 'Post Show Page' do
   let!(:user1) { User.create(name: 'Tom', bio: 'Teacher from Mexico.', photo: 'https://avatars.githubusercontent.com/u/98366229?v=4', posts_counter: 0) }
-  let!(:post1) { Post.create(author_id: user1.id, title: 'Hello', text: 'This is my first post', comments_counter: 0, likes_counter: 0) }
+  let!(:post1) do
+    Post.create(author_id: user1.id, title: 'Hello', text: 'This is my first post', comments_counter: 0,
+                likes_counter: 0)
+  end
   let!(:comment1) { Comment.create(author: user1, post: post1, body: 'Perfect!') }
   scenario 'Displays post title' do
     visit user_post_path(user1, post1)
