@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.login-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: 2rem auto;
+}
+
+input {
+  width: 40rem;
+  margin-bottom: 1rem;
+}
+
+#user_remember_me {
+  position: absolute;
+  left: -76px;
+  top: 205px;
+}
