@@ -1,6 +1,11 @@
 <div class="row mt-4">
     <div class="col-lg-2">
-        <%= image_tag(@user.photo, alt: "Default", style: "width: 70%;") %>
+        <% if user.photo.present? %>
+            <%= image_tag(user.photo, alt: "Default", style: "width: 70%;") %>
+        <% else %>
+            <!-- Default image or alternative content if user.photo is nil -->
+            <%= image_tag("default.jpg", alt: "Default", style: "width: 70%;") %>
+        <% end %>
     </div>
     <div class="col-lg-10 border border-dark d-flex align-items-center">
         <div class="user-lists w-100">
